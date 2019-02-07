@@ -1,5 +1,21 @@
 export default function createStore(reducer) {
-  // add your code here
+  let state = reducer.state;
+
+  function getState() {
+    return state;
+  }
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    render(); 
+  }
+
+  dispatch({ type: 'beef' })
+
+  return {
+    dispatch,
+    getState
+  };
 }
 
 function render() {
